@@ -23,7 +23,6 @@
 }
 
 .section {
-  background-color: #5a2b2b;
   padding: 15px;
   border-radius: 10px;
 }
@@ -99,6 +98,7 @@ button:hover {
 }
 
 .screen {
+  margin-top: 10px;
   background-color: #c1ffc1;
   padding: 10px;
   font-size: 1.5em;
@@ -106,6 +106,8 @@ button:hover {
   margin-bottom: 10px;
   border-radius: 8px;
   color: black;
+  width: 87%;
+  margin-left: 11px;
 }
 
 .keypad {
@@ -121,36 +123,49 @@ button:hover {
 .keypad button.green {
   background-color: #5cb85c;
 }
+
+.section-calculator {
+background-color: black;
+border-radius: 8px;
+}
+
+#delete-order {
+  background-color: red;
+}
+ #new-order, #history, #checkout, #view-transaction, #delete-order {
+  width: 50%;
+  margin-left: 50%;
+ }
   </style>
 </head>
 <body>
   <div class="pos-system">
     <div class="section drinks">
       <h2>Drinks</h2>
-      <button>Water</button><button>Coke</button><button>Sprite</button>
-      <button>Royal</button><button>Zest-O</button>
+      <button id="water">Water</button><button id="coke">Coke</button><button id="sprite">Sprite</button>
+      <button id="royal">Royal</button><button id="zest-o">Zest-O</button>
     </div>
 
     <div class="section meals">
       <h2>Meals</h2>
-      <button>Fried Chicken</button><button>Fish</button><button>Bulalo</button>
-      <button>Kare2x</button><button>Hamburger</button>
-      <button>Beef</button><button>Halang2x</button><button>Bicol Express</button>
-      <button>Porkchop</button>
+      <button id="fried-chicken">Fried Chicken</button><button id="fish">Fish</button><button id="bulalo">Bulalo</button>
+      <button id="kare2x">Kare2x</button><button id="hamburger">Hamburger</button>
+      <button id="beef">Beef</button><button id="halang2x">Halang2x</button><button id="bicol-express">Bicol Express</button>
+      <button id="porkchop">Porkchop</button>
     </div>
 
     <div class="section desserts">
       <h2>Desserts</h2>
-      <button>Mango Ice Cream</button><button>Choco Ice Cream</button>
-      <button>Sundae</button><button>Halo2x</button>
-      <button>Popsicle</button><button>Strawberry Ice Cream</button>
-      <button>Cookie</button>
+      <button id="mango-ice-cream">Mango Ice Cream</button><button id="choco-ice-cream">Choco Ice Cream</button>
+      <button id="sundae">Sundae</button><button id="halo2x">Halo2x</button>
+      <button id="popsicle">Popsicle</button><button id="strawberry-ice-cream">Strawberry Ice Cream</button>
+      <button id="cookie">Cookie</button>
     </div>
 
     <div class="section specials">
       <h2>Specials</h2>
-      <button>Buffet</button><button>Family Specials</button>
-      <button>Lechon Baboy</button>
+      <button id="buffet">Buffet</button><button id="family-specials">Family Specials</button>
+      <button id="lechon-baboy">Lechon Baboy</button>
     </div>
 
     <div class="section rice">
@@ -158,25 +173,25 @@ button:hover {
       <div class="rice-input">
         <input type="number" value="0" min="0"/>
         <span>Cup</span>
-        <button>Add</button>
+        <button id="add-rice">Add</button>
       </div>
     </div>
 
     <div class="section actions">
-      <button>New Order</button>
-      <button>History</button>
-      <button>Checkout</button>
-      <button>View Transaction</button>
-      <button>Delete Order</button>
+      <button id="new-order">New Order</button>
+      <button id="history">History</button>
+      <button id="checkout">Checkout</button>
+      <button id="view-transaction">View Transaction</button>
+      <button id="delete-order">Delete Order</button>
     </div>
 
-    <div class="section calculator">
+    <div class="section-calculator">
       <div class="screen">0</div>
       <div class="keypad">
-        <button>1</button><button>2</button><button>3</button>
-        <button>4</button><button>5</button><button>6</button>
-        <button>7</button><button>8</button><button>9</button>
-        <button class="red">X</button><button>0</button><button class="green">ENTER</button>
+        <button id="1">1</button><button id="2">2</button><button id="3">3</button>
+        <button id="4">4</button><button id="5">5</button><button id="6">6</button>
+        <button id="7">7</button><button id="8">8</button><button id="9">9</button>
+        <button class="red" id="clear">X</button><button id="0">0</button><button class="green" id="enter">ENTER</button>
       </div>
     </div>
   </div>
