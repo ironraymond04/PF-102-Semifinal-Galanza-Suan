@@ -3,176 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>POS System</title>
-  <style>
-    body {
-  font-family: sans-serif;
-  background-color: #833f3f;
-  margin: 0;
-  padding: 20px;
-}
-
-.pos-system {
-  display: grid;
-  grid-template-areas:
-    "drinks meals desserts specials"
-    "rice rice actions calculator";
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  color: white;
-}
-
-.section {
-  padding: 15px;
-  border-radius: 10px;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 1.2em;
-}
-
-button {
-  background-color: #3a60ff;
-  border: none;
-  color: white;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.95em;
-}
-
-button:hover {
-  background-color: #274dc7;
-}
-
-.drinks {
-  grid-area: drinks;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.meals {
-  grid-area: meals;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.desserts {
-  grid-area: desserts;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.specials {
-  grid-area: specials;
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-.rice {
-  grid-area: rice;
-}
-
-.rice-input {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.rice input {
-  width: 40px;
-  text-align: center;
-}
-
-.actions {
-  grid-area: actions;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.calculator {
-  grid-area: calculator;
-}
-
-.screen {
-  margin-top: 10px;
-  background-color: #c1ffc1;
-  padding: 10px;
-  font-size: 1.5em;
-  text-align: right;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  color: black;
-  width: 87%;
-  margin-left: 11px;
-}
-
-.keypad {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.keypad button.red {
-  background-color: #d9534f;
-}
-
-.keypad button.green {
-  background-color: #5cb85c;
-}
-
-.section-calculator {
-background-color: black;
-border-radius: 8px;
-}
-
-#delete-order {
-  background-color: red;
-}
- #new-order, #history, #checkout, #view-transaction, #delete-order {
-  width: 50%;
-  margin-left: 50%;
- }
-  </style>
 </head>
 <body>
   <div class="pos-system">
     <div class="section drinks">
       <h2>Drinks</h2>
-      <button id="water">Water</button><button id="coke">Coke</button><button id="sprite">Sprite</button>
-      <button id="royal">Royal</button><button id="zest-o">Zest-O</button>
+      <button id="water">Water ₱10</button><button id="coke">Coke ₱20</button><button id="sprite">Sprite ₱20</button>
+      <button id="royal">Royal ₱20</button><button id="zest-o">Zest-O ₱15</button>
     </div>
 
     <div class="section meals">
       <h2>Meals</h2>
-      <button id="fried-chicken">Fried Chicken</button><button id="fish">Fish</button><button id="bulalo">Bulalo</button>
-      <button id="kare2x">Kare2x</button><button id="hamburger">Hamburger</button>
-      <button id="beef">Beef</button><button id="halang2x">Halang2x</button><button id="bicol-express">Bicol Express</button>
-      <button id="porkchop">Porkchop</button>
+      <button id="fried-chicken">Fried Chicken ₱65</button><button id="fish">Fish ₱70</button><button id="bulalo">Bulalo ₱120</button>
+      <button id="kare2x">Kare2x ₱110</button><button id="hamburger">Hamburger ₱50</button>
+      <button id="beef">Beef ₱85</button><button id="halang2x">Halang2x ₱90</button><button id="bicol-express">Bicol Express ₱75</button>
+      <button id="porkchop">Porkchop ₱70</button>
     </div>
 
     <div class="section desserts">
       <h2>Desserts</h2>
-      <button id="mango-ice-cream">Mango Ice Cream</button><button id="choco-ice-cream">Choco Ice Cream</button>
-      <button id="sundae">Sundae</button><button id="halo2x">Halo2x</button>
-      <button id="popsicle">Popsicle</button><button id="strawberry-ice-cream">Strawberry Ice Cream</button>
-      <button id="cookie">Cookie</button>
+      <button id="mango-ice-cream">Mango Ice Cream ₱30</button><button id="choco-ice-cream">Choco Ice Cream ₱30</button>
+      <button id="sundae">Sundae ₱25</button><button id="halo2x">Halo2x ₱45</button>
+      <button id="popsicle">Popsicle ₱15</button><button id="strawberry-ice-cream">Strawberry Ice Cream ₱35</button>
+      <button id="cookie">Cookie ₱15</button>
     </div>
 
     <div class="section specials">
       <h2>Specials</h2>
-      <button id="buffet">Buffet</button><button id="family-specials">Family Specials</button>
-      <button id="lechon-baboy">Lechon Baboy</button>
+      <button id="buffet">Buffet ₱199</button><button id="family-specials">Family Specials ₱499</button>
+      <button id="lechon-baboy">Lechon Baboy <br>₱650/kilo</button>
     </div>
 
     <div class="section rice">
       <h2>Rice</h2>
       <div class="rice-input">
         <input type="number" value="0" min="0"/>
-        <span>Cup</span>
+        <span>₱10/Cup</span>
         <button id="add-rice">Add</button>
       </div>
     </div>
@@ -195,5 +63,7 @@ border-radius: 8px;
       </div>
     </div>
   </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

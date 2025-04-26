@@ -1,0 +1,131 @@
+body {
+    font-family: sans-serif;
+    background-color: #833f3f;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .pos-system {
+    display: grid;
+    grid-template-areas:
+      "drinks meals desserts specials"
+      "rice rice actions calculator";
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    color: white;
+  }
+  
+  .section {
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  h2 {
+    margin-top: 0;
+    font-size: 1.2em;
+  }
+  
+  button {
+    background-color: #3a60ff;
+    border: none;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+  }
+  
+  button:hover {
+    background-color: #274dc7;
+  }
+  
+  .drinks {
+    grid-area: drinks;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .meals {
+    grid-area: meals;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .desserts {
+    grid-area: desserts;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .specials {
+    grid-area: specials;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  .rice {
+    grid-area: rice;
+  }
+  
+  .rice-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .rice input {
+    width: 40px;
+    text-align: center;
+  }
+  
+  .actions {
+    grid-area: actions;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .calculator {
+    grid-area: calculator;
+  }
+  
+  .screen {
+    margin-top: 10px;
+    background-color: #c1ffc1;
+    padding: 10px;
+    font-size: 1.5em;
+    text-align: right;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: black;
+    width: 87%;
+    margin-left: 11px;
+  }
+  
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .keypad button.red {
+    background-color: #d9534f;
+  }
+  
+  .keypad button.green {
+    background-color: #5cb85c;
+  }
+  
+  .section-calculator {
+  background-color: black;
+  border-radius: 8px;
+  }
+  
+  #delete-order {
+    background-color: red;
+  }
+   #new-order, #history, #checkout, #view-transaction, #delete-order {
+    width: 50%;
+    margin-left: 50%;
+   }
