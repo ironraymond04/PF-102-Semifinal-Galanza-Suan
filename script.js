@@ -1,4 +1,3 @@
-// Elements
 const buttons = document.querySelectorAll('.section button:not(#add-rice):not(.red):not(.green):not(#new-order):not(#history):not(#checkout):not(#view-transaction):not(#delete-order)');
 const addRiceBtn = document.getElementById('add-rice');
 const riceInput = document.querySelector('.rice-input input');
@@ -14,8 +13,9 @@ const keypadButtons = document.querySelectorAll('.keypad button');
 let currentOrder = {};
 let history = [];
 let numpadInput = "";
+let waitingForPayment = false;
+let totalAmount = 0;
 
-// Price list
 const prices = {
   water: 10, coke: 20, sprite: 20, royal: 20, "zest-o": 15,
   "fried-chicken": 65, fish: 70, bulalo: 120, kare2x: 110, hamburger: 50,
@@ -26,7 +26,6 @@ const prices = {
   rice: 10
 };
 
-// Functions
 function updateScreen(text) {
   screen.textContent = text;
 }
@@ -45,6 +44,7 @@ function resetOrder() {
     currentOrder = {};
     updateScreen('0');
     numpadInput = '';
+    waitingForPayment = false;
     alert("New order started!");
   }
 }
@@ -54,6 +54,7 @@ function deleteOrder() {
     currentOrder = {};
     updateScreen('0');
     numpadInput = '';
+    waitingForPayment = false;
     alert("Order deleted.");
   }
 }
@@ -67,38 +68,15 @@ function calculateTotal(order) {
 }
 
 function checkout() {
-  let total = calculateTotal(currentOrder);
-  alert(`Total amount: ₱${total}`);
+  totalAmount = calculateTotal(currentOrder);
+  if (totalAmount === 0) {
+    alert("No items to checkout.");
+    return;
+  }
+  alert(`Total amount: ₱${totalAmount}\nPlease enter the customer's payment amount to calculate the change.`);
   updateScreen('0');
   numpadInput = '';
-
-  keypadButtons.forEach(btn => {
-    btn.addEventListener('click', function () {
-      if (btn.id === 'clear') {
-        numpadInput = "";
-        updateScreen('0');
-      } else if (btn.id === 'enter') {
-        let payment = parseFloat(numpadInput);
-        if (isNaN(payment)) {
-          alert("Please enter a valid amount.");
-          return;
-        }
-        if (payment >= total) {
-          let change = payment - total;
-          alert(`Payment accepted! Change: ₱${change}`);
-          history.push({ ...currentOrder, total: total, paid: payment, change: change });
-          currentOrder = {};
-          updateScreen('0');
-          numpadInput = '';
-        } else {
-          alert(`Insufficient payment. You need ₱${total - payment} more.`);
-        }
-      } else {
-        numpadInput += btn.textContent;
-        updateScreen(numpadInput);
-      }
-    });
-  }, { once: true }); // only set once during checkout
+  waitingForPayment = true;
 }
 
 function viewTransaction() {
@@ -133,7 +111,38 @@ function viewHistory() {
   alert(message);
 }
 
-// Event Listeners
+keypadButtons.forEach(btn => {
+  btn.addEventListener('click', function () {
+    if (!waitingForPayment) {
+      return; // Ignore if not checking out
+    }
+    if (btn.id === 'clear') {
+      numpadInput = "";
+      updateScreen('0');
+    } else if (btn.id === 'enter') {
+      let payment = parseFloat(numpadInput);
+      if (isNaN(payment)) {
+        alert("Please enter a valid amount.");
+        return;
+      }
+      if (payment >= totalAmount) {
+        let change = payment - totalAmount;
+        alert(`Payment accepted! Change: ₱${change}`);
+        history.push({ ...currentOrder, total: totalAmount, paid: payment, change: change });
+        currentOrder = {};
+        numpadInput = '';
+        waitingForPayment = false;
+        updateScreen('0');
+      } else {
+        alert(`Insufficient payment. You need ₱${totalAmount - payment} more.`);
+      }
+    } else {
+      numpadInput += btn.textContent;
+      updateScreen(numpadInput);
+    }
+  });
+});
+
 buttons.forEach(button => {
   button.addEventListener('click', function () {
     addItem(button.id);
